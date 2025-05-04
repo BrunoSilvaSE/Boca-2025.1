@@ -3,9 +3,10 @@ package main
 import	"fmt"
 
 func main(){
-	var qtdAlunos, n1, n2 int
-	var med float64
+	var qtdAlunos int
+	var med, n1, n2 float64
 	var status string
+	alunosStatus := []string{}
 	qtds := [3]int{0, 0, 0} // {qtdReprovado, qtdExame, qtdAprovado}
 
 	fmt.Scan(&qtdAlunos)
@@ -26,11 +27,15 @@ func main(){
 			qtds[2]++
 		}
 
-		fmt.Printf("Aluno %d: %s\n", i, status)
+		alunosStatus = append(alunosStatus, status)
 	}
 
-	fmt.Println("Total Aprovados: ", qtds[2])
-	fmt.Println("Total Exame: ", qtds[1])
-	fmt.Println("Total Reprovados: ", qtds[0	])
+	for k, v := range alunosStatus{
+		fmt.Printf("Aluno %d: %s\n", k+1, v)
+	}
+
+	fmt.Printf("Total Aprovados: %d\n", qtds[2])
+	fmt.Printf("Total Exame: %d\n", qtds[1])
+	fmt.Printf("Total Reprovados: %d\n", qtds[0])
 	
 }
